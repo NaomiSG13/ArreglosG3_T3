@@ -25,3 +25,5 @@ oMiArreglo.Ordenar();
 Console.WriteLine(oMiArreglo);
 
 Console.ReadKey();
+
+// Versión 03: Estructura base para la siguiente clase
