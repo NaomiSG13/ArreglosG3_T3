@@ -1,28 +1,25 @@
-﻿//using Arreglos.Logica;
-
-//Console.WriteLine("Arreglos");
-
-//MiArreglo oMiArreglo = new MiArreglo(20);
-
-//oMiArreglo.Llenar(5, 50);
-
-//Console.WriteLine(oMiArreglo.ToString());
+﻿
 using Arreglos.Logica;
 
 Console.WriteLine("Arreglos");
 
-MiArreglo oMiArreglo = new MiArreglo(10);
+MiArreglo oMyArreglo = new MiArreglo(10);
 
-oMiArreglo.Llenar(1, 100);
+oMyArreglo.Llenar(1, 100);
 
 
 Console.WriteLine("Arreglo desordenado");
-Console.WriteLine(oMiArreglo);
+Console.WriteLine(oMyArreglo);
 //oMyArreglo.ToString();
 
-Console.WriteLine("Arreglo ordenado");
-oMiArreglo.Ordenar();
-Console.WriteLine(oMiArreglo);
+Console.WriteLine("Arreglo ordenado ascendente");
+oMyArreglo.Ordenar(true); // con o sin true debe funcionar correctamente 
+Console.WriteLine(oMyArreglo);
+
+Console.WriteLine("Arreglo ordenado adescendente");
+oMyArreglo.Ordenar(false);
+Console.WriteLine(oMyArreglo);
+
 
 Console.ReadKey();
 
