@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Xml.Schema;
 
 namespace Arreglos.Logica
 {
@@ -22,10 +23,16 @@ namespace Arreglos.Logica
         //Propiedades
         public int N { get; }
 
-        public bool Esatalleno => _tope == N;
+        public bool Estalleno => _tope == N;
         public bool Estavacio => _tope == 0;
 
-        //Metodos 
+
+        public void Llenar()
+        {
+            Llenar(1,100);
+        }
+
+        //Metodo llenar con parametros 
         public void Llenar(int minimo, int maximo)
         {
             Random random = new Random();
@@ -58,14 +65,14 @@ namespace Arreglos.Logica
                             Cambiar(ref _arreglo[i], ref _arreglo[j]);
                         }
                     }
-                   else
-                   {
+                    else
+                    {
                         if (_arreglo[i] < _arreglo[j])
                         {
                             Cambiar(ref _arreglo[i], ref _arreglo[j]);
                         }
 
-                   }
+                    }
                 }
             }
         }
@@ -80,6 +87,62 @@ namespace Arreglos.Logica
 
         }
 
+        // metodo agaregar 
+        public void Agregar(int numero)
+        {
+            if (Estalleno)
+            {
+                throw new Exception("El arreglo esta lleno");
+            }
+            _arreglo[_tope] = numero;
+
+            _tope++;
+
+        }
+        //Método insertar 
+        public void Insertar(int numero, int posicion)
+        {
+            if (Estalleno)
+            {
+                throw new Exception("El arreglo esta lleno");
+            }
+            if (posicion < 0)
+            {
+                posicion = 0;
+            }
+            if (posicion > _tope)
+            {
+                posicion = _tope;
+            }
+            for (int i = _tope; i > posicion; i--)
+            {
+                _arreglo[i] = _arreglo[i - 1];
+            }
+            _arreglo[posicion] = numero;
+            _tope++;
+        }
+
+        //Método eliminar 
+        public void Eliminar (int posicion)
+        {
+            if (Estavacio)
+            {
+                throw new Exception("El arreglo esta vacio");
+            }
+            if(posicion < 0)
+            {
+                posicion = 0;
+            }
+            if (posicion > _tope)
+            {
+                posicion = _tope;
+            }
+            for (int i =posicion; i<_tope -1; i++)
+            {
+                _arreglo[i]= _arreglo[i+1];
+            }
+            _tope--;
+        }
         //Metodo ToString para mostrar el arreglo
         public override string ToString()
         {
@@ -107,6 +170,7 @@ namespace Arreglos.Logica
             return salida;
 
         }
+
 
     }
 }
